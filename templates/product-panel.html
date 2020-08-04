@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="app.css">
+
+ <ul class="nav nav-pills" ng-show="product in store.products">
+
+		<li ng-class= '{active: panel.isSelected(1)}'><a href ng-click="panel.selectTab(1)">Description</a></li>
+
+		<li ng-class= '{active: panel.isSelected(2)}'><a href ng-click="panel.selectTab(2)">Specifications</a></li>
+
+		<li ng-class= '{active: panel.isSelected(3)}'><a href ng-click="panel.selectTab(3)">Reviews</a></li>
+  </ul>
+
+		<div class="panel" ng-show="panel.isSelected(1)">
+			<h4>Description</h4>
+			<p>{{product.description}}</p>
+		</div>
+		<div class="panel" ng-show="panel.isSelected(2)">
+			<h4>Specifications</h4>
+			<p>Shine: {{product.shine}}</p>
+			<p>Awesomeness: {{product.rarity}}</p>
+		</div>
+		<div class="panel" ng-show="panel.isSelected(3)">
+			<h4>--Reviews</h4>
+			<blockquote ng-repeat="review in product.reviews">
+				<b>Stars:{{review.stars}}</b>
+				{{review.body}}
+				<cite>By: {{review.author}}</cite>
+			</blockquote>
+	
+
+<!--form for sending reviews-->
+
+			<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+				<blockquote>
+					<b>Stars:{{reviewCtrl.review.stars}}</b>
+					<p>{{reviewCtrl.review.body}}</p>
+					<cite>By:{{reviewCtrl.review.author}}</cite>
+				</blockquote>
+				<select class="form-control" ng-model="reviewCtrl.review.stars" required="">
+					<option value="1">1 star</option>
+					<option value="2">2 star</option>
+					<option value="3">3 star</option>
+				</select>
+				<br></br>
+				<textarea class="form-control" rows="3" placeholder="your comment" ng-model="reviewCtrl.review.body" required="">Your comment</textarea>
+				<label>by:</label>
+				<input class="form-control" type="email" placeholder="your email"ng-model="reviewCtrl.review.author" required=""></input>
+				<br></br>
+				<div>Review form is {{reviewForm.$valid}}</div>
+				<input class="btn btn-info" type="submit" value="submit"></input>
+			</form>
+
+<!--form for sending reviews-->
+
+		</div>
+	</ul>
