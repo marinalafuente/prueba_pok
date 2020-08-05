@@ -7,46 +7,57 @@
  </head>
  <header>
 </header>
-	<body>
+<body>
+	<div class="arrow-right"></div>
+	<div class="arrow-left"></div>
+	
+	<div class="main">
 
-	<div class="main" ng-controller= "apiController">
-	<input type="text" ng-model="name" class="search-input" placeholder="Filtra pokemon por nombre">
- 	
- 	<div class='pokemon-card' ng-repeat="pokemon in pokemons">
+		<section ng-controller= "apiController">
+			<input type="text" ng-model="name" ng-keyup="$event.keyCode == 13 && buscar()" class="search-input" placeholder="Filtra pokemon por nombre"/>
+			
+			<div class='pokemon-card' ng-if="name">
+				<img ng-src='{{image}}'></img>
+				<a  href="/pokemon/:{{id}}">
+					<div class="pokemon-card-info">
+						<span class="poke-id">ID/{{id}}</span>
+				        <h3 class='name'>{{ name }}</h3>
+			            	<span>{{type}}</span>
+					</div>
+				</a>
+			</div>
+		</section>
 
-        <img src='{{ pokemon.sprites.front_default }}' />
+	 	<section ng-controller= "randomController" class="main" style="width: 100%;">
+	 	
+	 	<div class='pokemon-card' ng-repeat="pokemon in pokemons">
+	        <img src='{{ pokemon.sprites.front_default }}' />
+			<div class="pokemon-card-info">
+				<a  href="/pokemon/:{{pokemon.id}}">
+					<span class="poke-id">ID/{{pokemon.id}}</span>
+		        <h3 class='name'>{{ pokemon.name }}</h3>
+		        <ul class='stats'>
+		        	<div ng-repeat='item in pokemon.types' style="display:inline-block;">
+		            	<span class='stat-label'>{{item.type.name}} </span>
+		          	</div>
+		         </ul>
+		        </a>
+			</div>
+	    </div>
+	    
+		</section>
 
-		<div class="pokemon-card-info">
-			<span class="poke-id">ID/{{pokemon.id}}</span>
-	        <h3 class='name'>{{ pokemon.name }}</h3>
-	        <ul class='stats'>
-	        	<p ng-repeat='item in pokemon.types'>
-	            	<span class='stat-label'>{{item.type.name}} </span>
-	          	</p>
-	         </ul>
-
-	        <ul class='stats'>
-	          	<li ng-repeat='item in pokemon.abilities'>
-	            	<span class='stat-label'>{{item.ability.name}} </span>
-	          	</li>
-	        </ul>
+		
 		</div>
 
-    </div>
-<!-- 
-	<input type="text" ng-model="name" class="search-input">
-	<button ng-click="buscar()">Request</button>
-		<p>Nombre:{{name}}</p>
-		<p>Número:{{id}}</p>
-		<p>Orden:{{orden}}</p>
-		<img ng-src='{{image}}'></img>
-	</div> -->
+	<!-- 	<div ng-controller="PromiseCtrl">
+		    <p ng-repeat="name in pokeAttrNames">{{name}}</p>
+		</div> -->
 
-<!-- 	<div ng-controller="PromiseCtrl">
-	    <p ng-repeat="name in pokeAttrNames">{{name}}</p>
-	</div> -->
-	</div>	
-	</body>
+	</div>
+	<div class="circle-right"></div>
+	<div class="circle-left"></div>
+</body>
 <!-- <script type="text/javascript" src="angular.min.js"></script> -->
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>

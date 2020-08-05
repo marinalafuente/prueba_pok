@@ -1,6 +1,9 @@
 body{
  	background-color: #fde344;
 }
+section{
+	width: 100%;
+}
 .main{
 	width: 60%;
 	height: auto;
@@ -17,8 +20,8 @@ body{
 	font-size: 18px;
     text-align: center;
 	border: none;
-    background-color: #fdf8e9;
-    box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+    background-color: #fff7df;
+    box-shadow: 2px 9px 25px -10px rgba(0, 0, 0, 0.31);
 }
 .search-input::placeholder{
 	color: #c1c0bf;
@@ -37,11 +40,58 @@ body{
 img{
 	height: 150px;
 	position: relative;
-    left: 15%;
+    left: 20%;
 }
 .pokemon-card-info{
 	background-color: white;
 	min-height: 60%;
 	height: auto;
 }
+
+.stat-label{
+    height: 17px;
+    width: auto;
+    text-transform: uppercase;
+    border: 1px solid #af3f3f;
+    color: #af3f3f;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+/*      Arrows and sferes decoration       */
+
+.arrow-right {
+  background-color: #444;
+  height: 100px;
+  left: -50px;
+  position: absolute;
+  top: -50px;
+  width: 100px;
+  
+  -webkit-transform: rotate(-45deg);
+}
+
+/*.arrow-left {
+  background-color: #444;
+  height: 100px;
+  right: -50px;
+  position: absolute;
+  top: -50px;
+  width: 100px;
+  
+  -webkit-transform: rotate(-45deg);
+}
+
+.circle-right {
+    background-color: #ef2727;
+    height: 150px;
+    left: -73px;
+    position: absolute;
+    bottom: -73px;
+    width: 150px;
+    -webkit-transform: rotate(-45deg);
+    border-radius: 123px;
+}
+*/
+
 
