@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html ng-app="pokeApi">
+<html ng-app="myApp">
  <head>
  	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="app.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
     <title>PokeApi</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
  </head>
  <header>
 </header>
-	<body ng-controller= "apiController">
-	<div class="main">
-	<!-- <button ng-click="buscar()">goooooo</button>
+	<body>
 
-	<div class="poke-card" ng-repeat="item in pokemons">
+	<div class="main" ng-controller= "apiController">
 
-		<p>Nombre:{{item.name}}</p>
-		<p>Número:{{item.id}}</p>
-		<p>Orden:{{item.orden}}</p>
-		<img ng-src='{{item.image}}'></img>
-	</div>-->
+	 <button ng-click="buscar()">goooooo</button>
 
+ 	<div class='pokemon' ng-repeat="pokemon in pokemons">
+        <h2 class='name'>{{ pokemon.name }}</h2>
+        <img src='{{ pokemon.sprites.front_default }}' />
+        <ul class='stats'>
+          <li ng-repeat='item in pokemon.stats'>
+            <span class='stat-label'>{{item.stat.name}} : </span>
+            <span class='stat-value'>{{item.base_stat}}</span>
+          </li>
+        </ul>
+    </div>
+<!-- 
 	<input type="text" ng-model="name" class="search-input">
 	<button ng-click="buscar()">Request</button>
 		<p>Nombre:{{name}}</p>
 		<p>Número:{{id}}</p>
 		<p>Orden:{{orden}}</p>
 		<img ng-src='{{image}}'></img>
-	</div>
-		
+	</div> -->
+
+<!-- 	<div ng-controller="PromiseCtrl">
+	    <p ng-repeat="name in pokeAttrNames">{{name}}</p>
+	</div> -->
+	</div>	
 	</body>
 <!-- <script type="text/javascript" src="angular.min.js"></script> -->
-<script type="text/javascript" src="app.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+<script type="text/javascript" src="assets/app.js"></script>
  </body>
 </html>
