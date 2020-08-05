@@ -3,6 +3,7 @@
  <head>
  	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
     <title>PokeApi</title>
     <base href="/">
  </head>
@@ -21,7 +22,9 @@
 	 	<div class='pokemon-card' ng-repeat="pokemon in pokemons" ng-show="name">
 
 	        <img src='{{ pokemon.sprites.front_default }}' />
+
 			<div class="pokemon-card-info">
+
 				<a  href="#pokemon/{{pokemon.id}}">
 					<span class="poke-id">ID/{{pokemon.id}}</span>
 		        <h3 class='name'>{{ pokemon.name }}</h3>
@@ -30,6 +33,12 @@
 		            	<span class='stat-label'>{{item.type.name}} </span>
 		          	</div>
 		         </ul>
+<!-- 		         <ul class='stats'>
+		        	<div ng-repeat='item in pokemon.species' style="display:inline-block;" >
+		            	<span class='stat-label'>{{item.specie}} </span>
+		          	</div>
+		         </ul> -->
+
 		        </a>
 			</div>
 	    </div>
