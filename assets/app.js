@@ -38,10 +38,10 @@ app.controller('apiController', function($scope, $http){
 
   // };
 
-
   function randomInteger(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
   
     $scope.pokemons = [];
     
@@ -50,9 +50,9 @@ app.controller('apiController', function($scope, $http){
     function getPokeEndpoints(){
       var i;
       var endpoints = [];
-      for (i = 0; i < 2; i++){
-        var random = randomInteger(1, 251); // First and second generation pokemon, 1996 - 2002
-        var endPoint = '//pokeapi.co/api/v2/pokemon/' + random;
+      for (i = 0; i < 9; i++){
+        var random = randomInteger(1, 960); 
+        var endPoint = 'https://pokeapi.co/api/v2/pokemon/' + random;
         endpoints.push(endPoint);
       }
       return endpoints;
@@ -64,7 +64,7 @@ app.controller('apiController', function($scope, $http){
         $http.get(endPoint)
           .then(function(res){
             $scope.pokemons.push(res.data);
-            console.log("pokemonName = " + $scope.pokemonName);
+            
         });
     }
     

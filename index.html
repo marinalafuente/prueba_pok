@@ -10,18 +10,28 @@
 	<body>
 
 	<div class="main" ng-controller= "apiController">
+	<input type="text" ng-model="name" class="search-input" placeholder="Filtra pokemon por nombre">
+ 	
+ 	<div class='pokemon-card' ng-repeat="pokemon in pokemons">
 
-	 <button ng-click="buscar()">goooooo</button>
-
- 	<div class='pokemon' ng-repeat="pokemon in pokemons">
-        <h2 class='name'>{{ pokemon.name }}</h2>
         <img src='{{ pokemon.sprites.front_default }}' />
-        <ul class='stats'>
-          <li ng-repeat='item in pokemon.stats'>
-            <span class='stat-label'>{{item.stat.name}} : </span>
-            <span class='stat-value'>{{item.base_stat}}</span>
-          </li>
-        </ul>
+
+		<div class="pokemon-card-info">
+			<span class="poke-id">ID/{{pokemon.id}}</span>
+	        <h3 class='name'>{{ pokemon.name }}</h3>
+	        <ul class='stats'>
+	        	<p ng-repeat='item in pokemon.types'>
+	            	<span class='stat-label'>{{item.type.name}} </span>
+	          	</p>
+	         </ul>
+
+	        <ul class='stats'>
+	          	<li ng-repeat='item in pokemon.abilities'>
+	            	<span class='stat-label'>{{item.ability.name}} </span>
+	          	</li>
+	        </ul>
+		</div>
+
     </div>
 <!-- 
 	<input type="text" ng-model="name" class="search-input">
