@@ -1,6 +1,20 @@
 (function(){
+'use strict'
 
 var app = angular.module ('myApp', ['ngRoute']);
+
+app.config(function($routeProvider, $locationProvider) {
+  $routeProvider
+    .when('/pokemon/:id', {
+      templateUrl: '/views/card.html',
+      controller: 'apiController'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+
+    $locationProvider.html5Mode();
+});
 
 app.controller('apiController', function($scope, $http){
 
@@ -29,6 +43,7 @@ app.controller('apiController', function($scope, $http){
   };
 
 });
+
 
 //showing random pokemon every time the page is reloaded
 
@@ -68,19 +83,11 @@ function randomInteger(min, max) {
 
     getPokemons(getPokeEndpoints());
 
-
 });
 
+// app.controller('cardController', function($scope, $http){
 
-app.config(function($routeProvider) {
-  $routeProvider
-    .when('/pokemon/:id', {
-      templateUrl: '/templates/card.html',
-    })
-    .otherwise({
-      redirectTo: '/index.html'
-    });
-});
+// });
 
 
 

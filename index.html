@@ -4,6 +4,7 @@
  	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="assets/css/app.css">
     <title>PokeApi</title>
+    <base href="/">
  </head>
  <header>
 </header>
@@ -18,11 +19,11 @@
 			
 			<div class='pokemon-card' ng-if="name">
 				<img ng-src='{{image}}'></img>
-				<a  href="/pokemon/:{{id}}">
+				<a  href="#pokemon/{{id}}">
 					<div class="pokemon-card-info">
 						<span class="poke-id">ID/{{id}}</span>
 				        <h3 class='name'>{{ name }}</h3>
-			            	<span>{{type}}</span>
+			            	<span>{{type.name}}</span>
 					</div>
 				</a>
 			</div>
@@ -33,7 +34,7 @@
 	 	<div class='pokemon-card' ng-repeat="pokemon in pokemons">
 	        <img src='{{ pokemon.sprites.front_default }}' />
 			<div class="pokemon-card-info">
-				<a  href="/pokemon/:{{pokemon.id}}">
+				<a  href="#pokemon/{{pokemon.id}}">
 					<span class="poke-id">ID/{{pokemon.id}}</span>
 		        <h3 class='name'>{{ pokemon.name }}</h3>
 		        <ul class='stats'>
@@ -44,13 +45,11 @@
 		        </a>
 			</div>
 	    </div>
-	    
+	
 		</section>
-
 		
-		</div>
-
-	<!-- 	<div ng-controller="PromiseCtrl">
+	</div>
+	<!-- <div ng-controller="PromiseCtrl">
 		    <p ng-repeat="name in pokeAttrNames">{{name}}</p>
 		</div> -->
 
