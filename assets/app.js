@@ -7,41 +7,13 @@ app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/pokemon/:id', {
       templateUrl: '/views/card.html',
-      controller: 'apiController'
+      controller: ''
     })
     .otherwise({
       redirectTo: '/'
     });
 
     $locationProvider.html5Mode();
-});
-
-app.controller('apiController', function($scope, $http){
-
-  $scope.buscar = function(){
-    $http({
-      method: 'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon/'+ $scope.name
-      }).then(function successCallback(response, data, status, headers, config) {
-
-          // $scope.pokemons.forEach(function(response, data){
-          //       $http.get('https://pokeapi.co/api/v2/pokemon/'+ $scope.name)
-          //            .then(function(response, data) {
-          //                $scope.pokemons.push(response.data.name);
-          //             });
-          //     });
-          $scope.name = response.data.name;
-          $scope.id = response.data.id;
-          $scope.image = response.data.sprites.front_default;
-          $scope.type = response.data.types.type;
-
-
-      }, function errorCallback(response, data, status, headers, config) {
-       alert("This pokemon is unknown even at his home");
-    });
-
-  };
-
 });
 
 
@@ -83,12 +55,24 @@ function randomInteger(min, max) {
 
     getPokemons(getPokeEndpoints());
 
+    $scope.buscar = function(){
+    $http({
+      method: 'GET',
+      url: 'https://pokeapi.co/api/v2/pokemon/'+ $scope.name
+      }).then(function successCallback(response, data, status, headers, config) {
+
+        if ($scope.name == response.data.name){
+         $scope.pokemons.unshift(response.data);
+        }
+
+
+      }, function errorCallback(response, data, status, headers, config) {
+       alert("This pokemon is unknown even at his home");
+    });
+
+  };
+
 });
-
-// app.controller('cardController', function($scope, $http){
-
-// });
-
 
 
 

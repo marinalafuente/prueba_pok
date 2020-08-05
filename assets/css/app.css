@@ -26,7 +26,10 @@ section{
 .search-input::placeholder{
 	color: #c1c0bf;
 }
-
+a{
+	color: black;
+	text-decoration: none;
+}
 .pokemon-card{
 	height: auto;
 	width: 30.5%;
@@ -44,8 +47,9 @@ img{
 }
 .pokemon-card-info{
 	background-color: white;
-	min-height: 60%;
-	height: auto;
+    min-height: 50%;
+    height: auto;
+    padding: 10px;
 }
 
 .stat-label{

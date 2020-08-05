@@ -14,24 +14,12 @@
 	
 	<div class="main">
 
-		<section ng-controller= "apiController">
-			<input type="text" ng-model="name" ng-keyup="$event.keyCode == 13 && buscar()" class="search-input" placeholder="Filtra pokemon por nombre"/>
-			
-			<div class='pokemon-card' ng-if="name">
-				<img ng-src='{{image}}'></img>
-				<a  href="#pokemon/{{id}}">
-					<div class="pokemon-card-info">
-						<span class="poke-id">ID/{{id}}</span>
-				        <h3 class='name'>{{ name }}</h3>
-			            	<span>{{type.name}}</span>
-					</div>
-				</a>
-			</div>
-		</section>
-
 	 	<section ng-controller= "randomController" class="main" style="width: 100%;">
+
+	 	<input type="text" ng-model="name" ng-keyup="$event.keyCode == 13 && buscar()" class="search-input" placeholder="Filtra pokemon por nombre"/>
 	 	
-	 	<div class='pokemon-card' ng-repeat="pokemon in pokemons">
+	 	<div class='pokemon-card' ng-repeat="pokemon in pokemons" ng-show="name">
+
 	        <img src='{{ pokemon.sprites.front_default }}' />
 			<div class="pokemon-card-info">
 				<a  href="#pokemon/{{pokemon.id}}">
