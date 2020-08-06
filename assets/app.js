@@ -19,7 +19,6 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
 });
 
-
 //showing random pokemon every time the page is reloaded
 
 app.controller('randomController', function($scope, $http, $routeParams){
@@ -47,7 +46,7 @@ function randomInteger(min, max) {
       var i;
       var endpoints = [];
       for (i = 0; i < 12; i++){
-        var random = randomInteger(1, 960); 
+        var random = randomInteger(1, 960);  //aprox max num of pokemons in api
         var endPoint = 'https://pokeapi.co/api/v2/pokemon/' + random;
         endpoints.push(endPoint);
       }
@@ -71,19 +70,8 @@ function randomInteger(min, max) {
 
     getPokemons(getPokeEndpoints());
 
-  /*var getEvolution = function(id){
-      $http({
-      method: 'GET',
-      url: 'https://pokeapi.co/api/v2/pokemon-species/'+ $scope.id
-      }).then(function successCallback(response, data, headers) {
-
-         $scope.evolution = response.data.evolves_from_species.name;
-
-      }, function errorCallback(response, data, headers) {
-         alert("Error");
-      });
-    }
-    getEvolution();*/
+//input for name filtering
+//better solution with a custom filter
 
     $scope.buscar = function(){
     $http({
@@ -100,6 +88,23 @@ function randomInteger(min, max) {
       });
 
     };
+
+//get info about evolution tree 
+
+  /*var getEvolution = function(id){
+      $http({
+      method: 'GET',
+      url: 'https://pokeapi.co/api/v2/pokemon-species/'+ $scope.id
+      }).then(function successCallback(response, data, headers) {
+
+         $scope.evolution = response.data.evolves_from_species.name;
+
+      }, function errorCallback(response, data, headers) {
+         alert("Error");
+      });
+    }
+    getEvolution();*/
+
 
 });
 

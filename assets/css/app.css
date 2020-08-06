@@ -47,6 +47,7 @@ a{
 .big-card{
     width: 50%;
     margin: 0 auto;
+    margin-top: 30px;
 }
 .big-card>img{
   height: 250px;
