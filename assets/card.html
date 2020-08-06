@@ -1,0 +1,18 @@
+<!--  card w pokemon info -->
+<section ng-controller= "randomController">
+<div class="pokemon-card big-card">
+	<img src='{{ pokemon.sprites.front_default }}' />
+	<div class="pokemon-card-info">
+		<a  ng-href="/">
+			<span class="poke-id" ng-model="id">ID/{{pokemon.id}}</span>
+        <h3 class='name'>{{ pokemon.name }}</h3>
+        <ul class='stats'>
+        	<div ng-repeat='item in pokemon.types' style="display:inline-block;">
+            	<span class='stat-label'>{{item.type.name}} </span>
+          	</div>
+        </ul>
+        </a>
+        <!-- <p>Evolves from {{evolution}}</p> -->
+	</div>
+</div>	
+</section>

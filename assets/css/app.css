@@ -5,24 +5,27 @@ body{
 section{
 	width: 100%;
 }
+h3{
+  margin-top: 0;
+}
 .main{
 	width: 60%;
 	height: auto;
 	margin: 0 auto;
 	display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
 	
- }
+}
 .search-input{
 	width: 100%;
 	height: 35px;
 	font-size: 18px;
-    text-align: center;
+  text-align: center;
 	border: none;
-    background-color: #fff7df;
-    box-shadow: 2px 9px 25px -10px rgba(0, 0, 0, 0.31);
+  background-color: #fff7df;
+  box-shadow: 2px 9px 25px -10px rgba(0, 0, 0, 0.31);
 }
 .search-input::placeholder{
 	color: #c1c0bf;
@@ -32,25 +35,41 @@ a{
 	text-decoration: none;
 }
 .pokemon-card{
-	height: auto;
-	width: 30.5%;
-	background-color: #dedede;
+	  height: auto;
+	  width: 30.5%;
+	  background-color: #dedede;
     flex-direction: column;
     overflow: hidden;
     border-radius: 0.25rem;
     box-shadow: 0px 18px 30px -16px rgba(0, 0, 0, 0.25);
     margin: 10px;
 }
+.big-card{
+    width: 50%;
+    margin: 0 auto;
+}
+.big-card>img{
+  height: 250px;
+}
+
 img{
-	height: 150px;
-	position: relative;
+	  height: 150px;
+	  position: relative;
     left: 20%;
+}
+.poke-id{
+    color: #905757;
+    background-color: #c5c5c5;
+    padding: 4px;
+    border-radius: 4px;
+    top: -35px;
+    position: relative;
 }
 .pokemon-card-info{
 	background-color: white;
-    min-height: 50%;
-    height: auto;
-    padding: 10px;
+  min-height: 50%;
+  height: auto;
+  padding: 10px;
 }
 .name:first-letter {
     text-transform:capitalize;
@@ -78,31 +97,37 @@ ul{
   position: absolute;
   top: -50px;
   width: 100px;
-  
   -webkit-transform: rotate(-45deg);
 }
-
-/*.arrow-left {
-  background-color: #444;
-  height: 100px;
-  right: -50px;
-  position: absolute;
-  top: -50px;
-  width: 100px;
-  
-  -webkit-transform: rotate(-45deg);
+.arrow-left{
+   width: 0px;
+   border-top: 120px solid #444;
+   border-left: 120px solid transparent;
+   right: 0px;
+   position: absolute;
+   top: -50px;
 }
 
 .circle-right {
     background-color: #ef2727;
     height: 150px;
     left: -73px;
-    position: absolute;
+    position: fixed;
     bottom: -73px;
     width: 150px;
     -webkit-transform: rotate(-45deg);
     border-radius: 123px;
 }
-*/
+
+.circle-left {
+    background-color: #ef2727;
+    height: 150px;
+    right: -73px;
+    position: fixed;
+    bottom: -73px;
+    width: 150px;
+    -webkit-transform: rotate(-45deg);
+    border-radius: 123px;
+}
 
 

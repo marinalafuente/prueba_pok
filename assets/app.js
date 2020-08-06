@@ -5,21 +5,37 @@ var app = angular.module ('myApp', ['ngRoute']);
 
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
+    .when('/',{
+      templateUrl: 'assets/home.html'
+    })
     .when('/pokemon/:id', {
-      templateUrl: '/views/card.html',
-      controller: ''
+      templateUrl: 'assets/card.html'
     })
     .otherwise({
       redirectTo: '/'
     });
 
     $locationProvider.html5Mode();
+    $locationProvider.hashPrefix('');
 });
 
 
 //showing random pokemon every time the page is reloaded
 
-app.controller('randomController', function($scope, $http){
+app.controller('randomController', function($scope, $http, $routeParams){
+
+  $scope.id = $routeParams.id;
+
+  function displayPok(){
+    var endPoint = 'https://pokeapi.co/api/v2/pokemon/' + $scope.id;
+        $http.get(endPoint)
+          .then(function(res){
+            $scope.pokemon = res.data; 
+        });
+          return $scope.pokemon;
+  }
+  displayPok();
+  
 
 function randomInteger(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -55,22 +71,35 @@ function randomInteger(min, max) {
 
     getPokemons(getPokeEndpoints());
 
+  /*var getEvolution = function(id){
+      $http({
+      method: 'GET',
+      url: 'https://pokeapi.co/api/v2/pokemon-species/'+ $scope.id
+      }).then(function successCallback(response, data, headers) {
+
+         $scope.evolution = response.data.evolves_from_species.name;
+
+      }, function errorCallback(response, data, headers) {
+         alert("Error");
+      });
+    }
+    getEvolution();*/
+
     $scope.buscar = function(){
     $http({
       method: 'GET',
       url: 'https://pokeapi.co/api/v2/pokemon/'+ $scope.name
-      }).then(function successCallback(response, data, status, headers, config) {
+      }).then(function successCallback(response, data, status, headers) {
 
         if ($scope.name == response.data.name){
          $scope.pokemons.unshift(response.data);
         }
 
-
-      }, function errorCallback(response, data, status, headers, config) {
+      }, function errorCallback(response, data, status, headers) {
        alert("This pokemon is unknown even at his home");
-    });
+      });
 
-  };
+    };
 
 });
 
